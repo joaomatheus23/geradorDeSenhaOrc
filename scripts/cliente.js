@@ -11,7 +11,7 @@ function updateOrderStatus() {
     const preparingOrders = document.getElementById('preparingOrders');
     const readyOrders = document.getElementById('readyOrders');
 
-    preparingOrders.innerHTML = '<h2>Em Preparo</h2>'; // Limpa e adiciona título
+    preparingOrders.innerHTML = '<h2>Preparando</h2>'; // Limpa e adiciona título
     readyOrders.innerHTML = '<h2>Pronto</h2>'; // Limpa e adiciona título
 
     for (const id in orders) {

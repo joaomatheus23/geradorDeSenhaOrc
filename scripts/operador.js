@@ -7,18 +7,17 @@ function setOrders(orders) {
 }
 
 function registerOrder() {
-    const name = document.getElementById('clientName').value;
     const password = document.getElementById('clientPassword').value;
 
-    if (name && password) {
+    if (password) {
         const orders = getOrders();
         const id = Date.now().toString(); // Unique ID based on timestamp
-        orders[id] = { name, password, status: 'em preparo', createdAt: Date.now() };
+        orders[id] = { password, status: 'em preparo', createdAt: Date.now() };
         setOrders(orders);
         document.getElementById('orderForm').reset();
         displayOrders(); // Atualiza a lista de pedidos
     } else {
-        alert('Por favor, preencha todos os campos.');
+        alert('Por favor, preencha o campo de senha.');
     }
 }
 
@@ -28,7 +27,6 @@ function markAsReady(id) {
         orders[id].status = 'pronto';
         setOrders(orders);
         displayOrders(); // Atualiza a lista de pedidos
-        
     }
 }
 
@@ -37,7 +35,6 @@ function deleteOrder(id) {
     delete orders[id];
     setOrders(orders);
     displayOrders(); // Atualiza a lista de pedidos
-    
 }
 
 function displayOrders() {
@@ -50,7 +47,6 @@ function displayOrders() {
         const orderDiv = document.createElement('div');
         orderDiv.className = 'order';
         orderDiv.innerHTML = `
-            <p>Nome: ${order.name}</p>
             <p>Senha: ${order.password}</p>
             <p>Status: ${order.status}</p>
             ${order.status === 'em preparo' ? `<button class="ready-btn" onclick="markAsReady('${id}')">Marcar como Pronto</button>` : ''}
